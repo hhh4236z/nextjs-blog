@@ -5,5 +5,5 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     query: { pid },
   } = req
 
-  res.end(`Post: ${pid}`)
+  res.end(`Post test: ${pid}`)
 }
