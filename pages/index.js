@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Layout, { siteTitle } from '../components/layout';
 import utilsStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
+import Date from '../components/date';
 
 export default function Home({ allPostsData }) {
   return (
@@ -12,10 +13,9 @@ export default function Home({ allPostsData }) {
         <title>{siteTitle}</title>
       </Head>
       <section className={utilsStyles.headingMd}>
-        <p>[my name is kkopite]</p>
+        <p>kkopite</p>
         <p>
-          (This is a sample website - you’ll be building a site like this on{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
+          i like football, javascript, typescript ...
         </p>
       </section>
 
@@ -24,11 +24,13 @@ export default function Home({ allPostsData }) {
         <ul className={utilsStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilsStyles.listItem} key={id}>
-              {title}
+              <Link href={`/posts/${id}`}>
+                {title}
+              </Link>
               <br />
-              {id}
-              <br />
-              {date}
+              <small className={utilsStyles.lightText}>
+              <Date dateString={date} />
+              </small>
             </li>
           ))}
         </ul>
